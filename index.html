@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evrard Ekdon Sehounon – Project Coordinator Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #29b6f6;
+    --blue-dark: #0288d1;
+    --blue-light: #e1f5fe;
+    --white: #ffffff;
+    --text: #1a2332;
+    --text-muted: #546e8a;
+    --border: #b3e5fc;
+    --section-bg: #f0f9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 2px solid var(--blue);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 60px;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--blue-dark); }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav ul a { text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+  nav ul a:hover { color: var(--blue-dark); }
+
+  /* HERO */
+  .hero {
+    background: var(--blue);
+    padding: 80px 48px 70px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); right: -80px; top: -120px;
+  }
+  .hero::after {
+    content: ''; position: absolute;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: rgba(255,255,255,0.06); left: 42%; bottom: -100px;
+  }
+  .hero-inner { max-width: 860px; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4); color: #fff;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: #fff; line-height: 1.15; margin-bottom: 8px; }
+  .hero-role { font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+  .hero-summary {
+    font-size: 0.93rem; color: rgba(255,255,255,0.9);
+    max-width: 640px; line-height: 1.75; margin-bottom: 30px;
+  }
+  .hero-contact { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-contact a {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35);
+    color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 500;
+    padding: 8px 16px; border-radius: 6px; transition: background 0.2s;
+  }
+  .hero-contact a:hover { background: rgba(255,255,255,0.25); }
+
+  /* SECTIONS */
+  section { padding: 64px 48px; }
+  section:nth-child(even) { background: var(--section-bg); }
+  .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 8px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.85rem; color: var(--text); margin-bottom: 36px; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 960px; }
+  .about-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.85; }
+  .about-text p + p { margin-top: 14px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--blue-dark); display: block; }
+  .stat-label { font-size: 0.73rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; display: block; }
+
+  /* EXPERIENCE */
+  .experience-list { max-width: 860px; display: flex; flex-direction: column; gap: 24px; }
+  .exp-card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 26px 28px;
+    transition: box-shadow 0.2s;
+  }
+  .exp-card:hover { box-shadow: 0 6px 24px rgba(41,182,246,0.1); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .exp-title { font-weight: 600; font-size: 0.97rem; color: var(--text); }
+  .exp-period {
+    font-size: 0.75rem; font-weight: 600; color: var(--blue-dark);
+    background: var(--blue-light); padding: 3px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .exp-company { font-size: 0.82rem; color: var(--blue-dark); font-style: italic; margin-bottom: 14px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li { font-size: 0.85rem; color: var(--text-muted); padding-left: 16px; position: relative; line-height: 1.65; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
+
+  /* SKILLS */
+  .skills-wrapper { max-width: 960px; display: flex; flex-direction: column; gap: 32px; }
+  .skill-group-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 12px; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-pill {
+    background: var(--white); border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+    font-size: 0.82rem; font-weight: 500; color: var(--text);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-pill:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .skill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 22px; max-width: 1100px; }
+  .project-card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 16px; padding: 26px; position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 8px 32px rgba(41,182,246,0.12); transform: translateY(-3px); }
+  .project-number { position: absolute; top: 18px; right: 22px; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--blue-light); font-weight: 700; line-height: 1; }
+  .project-badge { display: inline-flex; background: var(--blue-light); color: var(--blue-dark); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; text-transform: uppercase; }
+  .project-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--text); margin-bottom: 5px; }
+  .project-role { font-size: 0.75rem; color: var(--blue-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; }
+  .project-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+  .deliverables-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .deliverables-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .deliverable-tag { background: var(--section-bg); border: 1px solid var(--border); color: var(--text); font-size: 0.7rem; padding: 4px 9px; border-radius: 5px; }
+  .tools-row { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 0.73rem; color: var(--text-muted); }
+  .tools-row strong { color: var(--blue-dark); }
+  .project-card.capstone { border-color: var(--blue); background: linear-gradient(135deg, #fff 80%, #e1f5fe 100%); grid-column: 1 / -1; }
+  .capstone-banner { background: var(--blue); color: #fff; font-size: 0.66rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 12px; display: inline-block; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; }
+  .edu-card {
+    background: var(--white); border: 1.5px solid var(--border); border-radius: 14px;
+    padding: 24px 26px; display: flex; gap: 18px; align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+  .edu-card:hover { box-shadow: 0 4px 20px rgba(41,182,246,0.1); }
+  .edu-icon { width: 46px; height: 46px; background: var(--blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+  .edu-degree { font-weight: 600; font-size: 0.9rem; color: var(--text); margin-bottom: 3px; }
+  .edu-school { font-size: 0.8rem; color: var(--blue-dark); font-style: italic; margin-bottom: 4px; }
+  .edu-detail { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* LANGUAGES */
+  .lang-row { display: flex; gap: 16px; flex-wrap: wrap; max-width: 500px; margin-top: 32px; }
+  .lang-chip {
+    background: var(--white); border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 10px 20px; text-align: center;
+  }
+  .lang-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+  .lang-level { font-size: 0.73rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* CONTACT */
+  .contact-inner { max-width: 600px; }
+  .contact-inner p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 28px; line-height: 1.75; }
+  .contact-links { display: flex; gap: 14px; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--blue); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 0.85rem; padding: 12px 24px;
+    border-radius: 8px; transition: background 0.2s;
+  }
+  .contact-link:hover { background: var(--blue-dark); }
+  .contact-link.secondary {
+    background: var(--white); color: var(--blue-dark);
+    border: 1.5px solid var(--blue);
+  }
+  .contact-link.secondary:hover { background: var(--blue-light); }
+
+  footer { background: var(--text); color: rgba(255,255,255,0.45); text-align: center; padding: 24px 48px; font-size: 0.76rem; }
+  footer span { color: var(--blue); }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 18px; }
+    nav ul { gap: 14px; }
+    .hero { padding: 50px 20px 46px; }
+    .hero h1 { font-size: 2rem; }
+    section { padding: 46px 20px; }
+    .about-grid, .edu-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .exp-header { flex-direction: column; }
+    footer { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Evrard Ekdon Sehounon</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Portfolio · 2026</div>
+    <h1>Evrard Ekdon<br>Sehounon</h1>
+    <p class="hero-role">IT Project Coordinator &nbsp;|&nbsp; Junior IT Project Manager</p>
+    <p class="hero-summary">
+      Detail-oriented Junior IT Project Manager with a background in remote project coordination and finance, supported by the Google Project Management Professional Certificate (GPA 3.9/4.0). Experienced in leading cross-functional workflows, managing stakeholder communication, and executing Agile fundamentals in distributed environments. Proven track record in operational efficiency and high documentation standards.
+    </p>
+    <div class="hero-contact">
+      <a href="mailto:sehounonevrard0@icloud.com">✉ sehounonevrard0@icloud.com</a>
+      <a href="tel:+22901973950 63">📞 +229 01 97 39 50 63</a>
+      <a href="#">📍 Cotonou, Benin · Full Remote</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Introduction</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am an IT Project Coordinator and Junior Project Manager based in Cotonou, Benin, with a strong foundation in both project management and finance. My career bridges operational project coordination with financial oversight — a rare combination that helps me keep projects on time and on budget.</p>
+      <p>I completed the Google Project Management Professional Certificate with a GPA of 3.9/4.0, gaining hands-on experience across the full project lifecycle using Agile, Scrum, and Waterfall frameworks. I am fully remote-ready and available as a contractor for international opportunities.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Projects Delivered</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3.9</span>
+        <span class="stat-label">Google PM GPA</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">2+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Remote Ready</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <div class="section-title">Professional Experience</div>
+  <div class="experience-list">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Junior Auditor / Finance & Accounting Intern</div>
+        <div class="exp-period">Feb 2026 – Present</div>
+      </div>
+      <div class="exp-company">Label Expertise</div>
+      <ul class="exp-bullets">
+        <li>Managing complex audit documentation and financial records, ensuring 100% compliance with clients' annual accounts.</li>
+        <li>Coordinating with cross-functional departments to gather data and resolve discrepancies, refining stakeholder management skills.</li>
+        <li>Developing detailed analytical reports used by senior leadership to track project budget health and operational efficiency.</li>
+        <li>Utilizing advanced Excel and data organization tools to streamline the audit lifecycle, reducing manual processing time.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Project Assistant / Sales Agent (Freelance – Full Remote)</div>
+        <div class="exp-period">Mar 2024 – Mar 2025</div>
+      </div>
+      <div class="exp-company">Xmatic LTD</div>
+      <ul class="exp-bullets">
+        <li>Streamlined service workflows for a remote team, ensuring on-time execution of client requirements.</li>
+        <li>Managed end-to-end client communications, acting as primary stakeholder liaison to proactively mitigate project risks and resolve blockers.</li>
+        <li>Maintained centralized project documentation and client files, improving team accessibility and follow-up accuracy.</li>
+        <li>Contributed to service improvement initiatives that increased operational efficiency and customer satisfaction scores.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Project & Finance Assistant</div>
+        <div class="exp-period">Nov 2023 – Mar 2024</div>
+      </div>
+      <div class="exp-company">Integrated Development Project for Agricultural Value Chains (PDI-CVA)</div>
+      <ul class="exp-bullets">
+        <li>Supported project coordination by developing comprehensive documentation, reporting, and administrative follow-up systems.</li>
+        <li>Monitored project financial health by preparing financial statements, tracking accounts payable/receivable, and managing outstanding invoices.</li>
+        <li>Digitized and organized complex financial and project records, ensuring data integrity for audits and project reviews.</li>
+        <li>Ensured seamless project execution by bridging the gap between operational needs and financial constraints.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Competencies</div>
+  <div class="section-title">Skills & Tools</div>
+  <div class="skills-wrapper">
+
+    <div>
+      <div class="skill-group-title">Project Management</div>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot"></span>Agile & Scrum Fundamentals</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Project Lifecycle (Init → Close)</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Waterfall Methodology</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Risk & Issue Mitigation</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Stakeholder Management</div>
+        <div class="skill-pill"><span class="skill-dot"></span>RACI Charts & WBS</div>
+        <div class="skill-pill"><span class="skill-dot"></span>OKRs & SMART Goals</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Sprint Retrospectives</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Communication Planning</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Project Documentation</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Technical Tools</div>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot"></span>Jira</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Asana</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Trello</div>
+        <div class="skill-pill"><span class="skill-dot"></span>ClickUp</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Google Workspace</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Microsoft Excel</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Operations & Finance</div>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot"></span>Remote Team Collaboration</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Budget Tracking</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Accounts Payable/Receivable</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Client Communication</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Financial Reporting</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Audit Documentation</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-badge">Waterfall / Agile</div>
+      <h3>Project Plant Pals</h3>
+      <div class="project-role">Project Coordinator / Project Assistant</div>
+      <p>Led the initiation of a simulated business project by defining measurable goals, mapping stakeholders, and building a full planning framework including charter, budget, risk plan, and project closure report.</p>
+      <div class="deliverables-title">Key Deliverables</div>
+      <div class="deliverables-list">
+        <span class="deliverable-tag">Project Charter</span>
+        <span class="deliverable-tag">SMART Goals & OKRs</span>
+        <span class="deliverable-tag">Stakeholder Analysis</span>
+        <span class="deliverable-tag">RACI Chart</span>
+        <span class="deliverable-tag">Gantt Chart</span>
+        <span class="deliverable-tag">Risk Plan</span>
+        <span class="deliverable-tag">Budget</span>
+        <span class="deliverable-tag">Communication Plan</span>
+        <span class="deliverable-tag">ROAM Analysis</span>
+        <span class="deliverable-tag">Closeout Report</span>
+      </div>
+      <div class="tools-row"><strong>Skills:</strong> Stakeholder management · Budgeting · Risk management · Procurement · Meeting facilitation</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-badge">Agile / Hybrid</div>
+      <h3>Project Planning & Schedule Coordination</h3>
+      <div class="project-role">Project Coordinator</div>
+      <p>Designed a comprehensive end-to-end project plan, breaking scope into WBS structures and building milestone timelines, budget estimates, and resource allocation plans for full project visibility.</p>
+      <div class="deliverables-title">Key Deliverables</div>
+      <div class="deliverables-list">
+        <span class="deliverable-tag">Project Plan</span>
+        <span class="deliverable-tag">WBS</span>
+        <span class="deliverable-tag">Risk Register</span>
+        <span class="deliverable-tag">Budget & Resource Plan</span>
+      </div>
+      <div class="tools-row"><strong>Skills:</strong> Agile planning · User stories · Backlog management · Product Roadmaps</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-badge">Agile – Scrum</div>
+      <h3>Project Execution & Team Coordination</h3>
+      <div class="project-role">Project Assistant / Coordinator</div>
+      <p>Supported full Agile execution by tracking deliverables, facilitating Scrum ceremonies, managing issue escalation, and maintaining documentation accuracy across sprint cycles.</p>
+      <div class="deliverables-title">Key Deliverables</div>
+      <div class="deliverables-list">
+        <span class="deliverable-tag">Status Reports</span>
+        <span class="deliverable-tag">Issue & Action Logs</span>
+        <span class="deliverable-tag">Sprint Review Summaries</span>
+      </div>
+      <div class="tools-row"><strong>Skills:</strong> Stand-ups · Sprint retrospectives · Issue tracking · Version control</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">04</div>
+      <div class="project-badge">Agile / Waterfall</div>
+      <h3>Project Closure & Performance Evaluation</h3>
+      <div class="project-role">Project Coordinator</div>
+      <p>Managed the formal closure phase by evaluating outcomes against objectives, facilitating lessons learned sessions, and organizing final documentation handover for a clean project wrap-up.</p>
+      <div class="deliverables-title">Key Deliverables</div>
+      <div class="deliverables-list">
+        <span class="deliverable-tag">Closure Report</span>
+        <span class="deliverable-tag">Lessons Learned</span>
+        <span class="deliverable-tag">Performance Summary</span>
+      </div>
+      <div class="tools-row"><strong>Skills:</strong> Evaluation · Reporting · Documentation · Continuous improvement</div>
+    </div>
+
+    <div class="project-card capstone">
+      <div class="capstone-banner">⭐ Capstone Project</div>
+      <div class="project-number">05</div>
+      <div class="project-badge">Waterfall</div>
+      <h3>Sauce & Spoon – Menu Tablet Rollout</h3>
+      <div class="project-role">Project Coordinator / IT Project Manager</div>
+      <p>Led the full lifecycle of a capstone project for Sauce & Spoon, a growing local restaurant chain. Rolled out a digital tabletop POS tablet system across two pilot locations to reduce service delays, improve order accuracy, and increase table turnover. Launched on April 23rd, delivered on budget, with positive guest feedback.</p>
+      <p><strong style="color:var(--text);">Context:</strong> Sauce & Spoon faced a 20% increase in order wait times and flat profit margins despite +28% annual sales growth. The tablet solution addressed staffing inefficiencies, human ticketing errors, and customer satisfaction issues.</p>
+      <div class="deliverables-title">Key Deliverables</div>
+      <div class="deliverables-list">
+        <span class="deliverable-tag">Project Proposal</span>
+        <span class="deliverable-tag">Project Charter</span>
+        <span class="deliverable-tag">Stakeholder Analysis</span>
+        <span class="deliverable-tag">Company OKRs</span>
+        <span class="deliverable-tag">Project Plan</span>
+        <span class="deliverable-tag">Tablets Menu Plan</span>
+        <span class="deliverable-tag">Test Launch Findings</span>
+        <span class="deliverable-tag">Presentation</span>
+        <span class="deliverable-tag">Customer Survey Results</span>
+        <span class="deliverable-tag">Retrospective Review</span>
+        <span class="deliverable-tag">Closeout Report</span>
+      </div>
+      <div class="tools-row" style="margin-top:16px;">
+        <strong>Outcomes:</strong> On-time launch · On-budget · Positive guest feedback · Improved service speed · Cash payment added as next milestone
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION & LANGUAGES -->
+<section id="education">
+  <div class="section-label">Background</div>
+  <div class="section-title">Education & Languages</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">Bachelor's Degree in Accounting & Finance</div>
+        <div class="edu-school">University of Parakou</div>
+        <div class="edu-detail">2020 – 2023</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">📜</div>
+      <div>
+        <div class="edu-degree">Google Project Management Professional Certificate</div>
+        <div class="edu-school">Coursera – Google Career Certificates</div>
+        <div class="edu-detail">2026 · GPA: 3.9 / 4.0</div>
+      </div>
+    </div>
+  </div>
+  <div class="lang-row">
+    <div class="lang-chip">
+      <div class="lang-name">🇫🇷 French</div>
+      <div class="lang-level">Native / Fluent</div>
+    </div>
+    <div class="lang-chip">
+      <div class="lang-name">🇬🇧 English</div>
+      <div class="lang-level">Professional Proficiency</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <div class="section-title">Contact</div>
+  <div class="contact-inner">
+    <p>I am currently open to Project Coordinator, Project Assistant, and Junior IT Project Manager roles on a full remote contractor basis. Based in Cotonou, Benin, available worldwide. If you're looking for a detail-oriented, bilingual, and certified project professional — let's connect.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:sehounonevrard0@icloud.com">✉ sehounonevrard0@icloud.com</a>
+      <a class="contact-link secondary" href="tel:+22901973950 63">📞 +229 01 97 39 50 63</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 <span>Evrard Ekdon Sehounon</span> · IT Project Coordinator Portfolio · All rights reserved
+</footer>
+
+</body>
+</html>
